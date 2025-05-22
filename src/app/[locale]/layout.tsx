@@ -2,6 +2,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import HtmlAttributesUpdater from '@/Components/HtmlAttributesUpdater';
+import ReduxProvider from '@/store/provider';
 
 export default async function LocaleLayout({
   children,
@@ -19,9 +20,11 @@ export default async function LocaleLayout({
 
   return (
     // DON'T move locale-dependent values into html/body directly if they change on client
+    <ReduxProvider>
     <NextIntlClientProvider locale={locale} messages={messages}>
       <HtmlAttributesUpdater />
       {children}
     </NextIntlClientProvider>
+    </ReduxProvider>
   );
 }

@@ -19,6 +19,11 @@ export async function loginFunction(
     }
     if (email === 'admin@example.com' && password === 'admin123') {
       shouldRedirect = true;
+      return {
+        message: 'success',
+        token: 'Bearer eyJ0eXAiOiAiSldUIiwgInR5cGUiOiAiQmVhcmVyIiwgInZhbCI6ICIxMjM0NS1hYmNkLWVmZ2gtMTIzNC01Njc4OTAifQ==',
+        email
+      };
     } else {
       return { message: "Invalid credentials" };
     }

@@ -1,19 +1,23 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { loginFunction } from "@/actions/login";
-import { useActionState } from "react";
 import { Input } from "@/Components/ui/input";
 import { Button } from "@/Components/ui/button";
 import { Label } from "@/Components/ui/label";
 import { Card, CardContent } from "@/Components/ui/card";
 import LanguageSwitcher from "@/Components/LanguageSwitcher";
+import { useParams } from 'next/navigation';
+import { useLoginAction } from "@/customeHooks/useLoginAction";
+import { useRedirectIfToken } from "@/customeHooks/useRedirectIfToken";
 
 export default function LoginPage() {
   const t = useTranslations();
-  const [formState, action] = useActionState(loginFunction, {
-    message: "",
-  });
+  const params = useParams();
+  const locale = params.locale as string;
+
+  // custome hook to handle login action & redirect if there is a token
+  const [formState, action] = useLoginAction(locale);
+  useRedirectIfToken(locale);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4 bg-gray-50 dark:bg-gray-900">

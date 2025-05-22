@@ -1,0 +1,75 @@
+'use server';
+import { createUserSchema } from '@/schema/schema';
+import { CreateUserFormState } from '@/types/general_interfaces';
+import { cookies } from 'next/headers';
+
+export async function createUserFunction(
+    formState: CreateUserFormState,
+    formData: FormData
+): Promise<CreateUserFormState> {
+    'use server';
+
+    const result = createUserSchema.safeParse({
+        name: formData.get('name'),
+        email: formData.get('email'),
+        gender: formData.get('gender'),
+        phone: formData.get('phone'),
+    });
+
+    if (!result.success) {
+        return {
+            errors: result.error.flatten().fieldErrors,
+        };
+    }
+    // Debugging: Log all cookies to verify their presence
+    const cookieStore = await cookies();
+    // Retrieve the token from cookies
+    const authToken = cookieStore.get('token')?.value || '';
+
+    if (!authToken) {
+        return {
+            errors: {
+                _form: ['No token found'],
+            },
+        };
+    }
+    console.log('Token:', authToken);
+    try {
+
+
+        const res = await fetch('/api/users', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(result.data),
+        });
+        if (!res.ok) {
+            return {
+                errors: {
+                    _form: [await res.text()],
+                },
+            };
+        }
+
+        return {
+            errors: {},
+            success: true,
+        };
+    } catch (err) {
+        if (err instanceof Error) {
+            return {
+                errors: {
+                    _form: [err.message],
+                },
+            };
+        } else {
+            return {
+                errors: {
+                    _form: ['Something went wrong...'],
+                },
+            };
+        }
+    }
+}

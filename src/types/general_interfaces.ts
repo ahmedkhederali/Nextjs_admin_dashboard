@@ -21,3 +21,31 @@ export interface User {
   gender: string | null;
   phone: string | null;
 }
+
+export interface ModernUserTableProps {
+  users: User[];
+  loading: boolean;
+  error: string | null;
+  search: string;
+  setSearch: (v: string) => void;
+  sortKey: 'id' | 'name' | 'email';
+  setSortKey: (v: 'id' | 'name' | 'email') => void;
+  sortOrder: 'asc' | 'desc';
+  setSortOrder: (v: 'asc' | 'desc') => void;
+  page: number;
+  setPage: (v: number) => void;
+  totalPages: number;
+  filteredCount: number;
+}
+
+
+export interface CreateUserFormState {
+  errors: {
+    name?: string[];
+    email?: string[];
+    gender?: string[];
+    phone?: string[];
+    _form?: string[];
+  };
+  success?: boolean;
+}

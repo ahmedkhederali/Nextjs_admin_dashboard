@@ -4,5 +4,19 @@
   "password": "Password",
   "submit": "Submit",
   "dashboard": "Dashboard",
-  "notFound": "Page Not Found"
+  "notFound": "Page Not Found",
+  "createUser": "Create User",
+  "name": "Name",
+  "enterName": "Enter name",
+  "gender": "Gender",
+  "male": "male",
+  "female": "female",
+  "phone": "Phone",
+  "enterPhone": "Enter phone",
+  "userCreated": "User created successfully!",
+  "userCreateFailed": "Failed to create user",
+  "cancel": "Cancel",
+  "save": "Save",
+  "close": "Close",
+  "enterEmail":"Enter Your Email"
 }

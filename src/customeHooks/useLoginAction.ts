@@ -13,6 +13,9 @@ export function useLoginAction(locale: string) {
       const result = await loginFunction(prevState, formData);
       if (result.message === "success") {
         if (typeof result.token === "string") {
+          // Store token in cookies
+          document.cookie = `token=${result.token}; path=/; Secure; SameSite=Strict`;
+          // Store token in localStorage
           localStorage.setItem("token", result.token);
           dispatch(reduxLogin({ email: result.email ?? "" }));
           router.push(`/${locale}/dashboard`);

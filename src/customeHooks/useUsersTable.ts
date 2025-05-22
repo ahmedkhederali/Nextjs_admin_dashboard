@@ -4,7 +4,7 @@ import { fetchUsers } from '@/store/slices/usersSlice';
 import { RootState, AppDispatch } from '@/store';
 import { User } from '@/types/general_interfaces';
 
-export function useUsersTable(pageSize = 5) {
+export function useUsersTable(pageSize = 10) {
   const dispatch = useDispatch<AppDispatch>();
   const { users, loading, error } = useSelector((state: RootState) => state.users);
 

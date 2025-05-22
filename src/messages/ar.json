@@ -4,5 +4,20 @@
   "password": "كلمة المرور",
   "submit": "تسجيل",
   "dashboard": "لوحة التحكم",
-  "notFound": "الصفحة غير موجودة"
+  "notFound": "الصفحة غير موجودة",
+  "createUser": "إنشاء مستخدم",
+  "name": "الاسم",
+  "enterName": "ادخل الاسم",
+  "gender": "الجنس",
+  "male": "ذكر",
+  "female": "أنثى",
+  "phone": "رقم الجوال",
+  "enterPhone": "ادخل رقم الجوال",
+  "userCreated": "تم إنشاء المستخدم بنجاح!",
+  "userCreateFailed": "فشل إنشاء المستخدم",
+  "cancel": "إلغاء",
+  "save": "حفظ",
+  "close": "إغلاق",
+    "enterEmail":"أدخل بريدك الإلكتروني"
+
 }

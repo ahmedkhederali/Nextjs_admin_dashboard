@@ -20,7 +20,7 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50">
+    <div className={` top-6 ${currentLocale === 'ar' ? 'left-[145]' : 'right-[145]'} z-50`}>
       <Select value={currentLocale || undefined} onValueChange={handleLanguageChange}>
         <SelectTrigger className="w-[120px] border p-2 rounded">
           <SelectValue placeholder="Select language" />

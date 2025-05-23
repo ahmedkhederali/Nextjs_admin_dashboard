@@ -49,3 +49,31 @@ export interface CreateUserFormState {
   };
   success?: boolean;
 }
+
+export interface CreateUserModalProps {
+  onClose: () => void;
+}
+
+export interface EditUserModalProps {
+  user: {
+    id: number;
+    name: string;
+    email: string;
+    gender: string;
+    phone: string;
+  };
+  onClose: () => void;
+  onSave: (updatedUser: {
+    id: number;
+    name: string;
+    email: string;
+    gender: string;
+    phone: string;
+  }) => void;
+}
+
+export interface DeleteUserModalProps {
+  userId: number;
+  onClose: () => void;
+  onDeleteSuccess: () => void;
+}

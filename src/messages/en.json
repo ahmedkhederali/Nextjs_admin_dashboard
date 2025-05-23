@@ -3,7 +3,9 @@
   "email": "Email",
   "password": "Password",
   "submit": "Submit",
-  "dashboard": "Dashboard",
+  "dashboard": {
+    "userList": "User List"
+  },
   "notFound": "Page Not Found",
   "createUser": "Create User",
   "name": "Name",
@@ -18,5 +20,41 @@
   "cancel": "Cancel",
   "save": "Save",
   "close": "Close",
-  "enterEmail":"Enter Your Email"
+  "enterEmail":"Enter Your Email",
+  "editUser":"Edit User",
+  "deleteUser": {
+    "confirmation": "Are you sure you want to delete this user?",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "error": "Failed to delete user"
+  },
+  "header": {
+    "title": "Admin Dashboard",
+    "logout": "Logout"
+  },
+  "modernUserTable": {
+    "filterEmails": "Filter emails...",
+    "columns": "Columns",
+    "createUser": "Create User",
+    "id": "ID",
+    "name": "Name",
+    "email": "Email",
+    "gender": "Gender",
+    "phone": "Phone",
+    "male": "Male",
+    "female":"Female",
+    "action": "Action",
+    "noUsersFound": "No users found.",
+    "edit": "Edit",
+    "delete": "Delete",
+    "of": "of",
+    "rowsSelected": "row(s) selected.",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "userAvatarMenu": {
+    "logout": "Log out"
+  },
+  "validationError": "Validation failed. Please check your input.",
+  "userUpdated": "User updated successfully!"
 }

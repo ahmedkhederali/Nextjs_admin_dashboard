@@ -3,7 +3,11 @@
   "email": "البريد الإلكتروني",
   "password": "كلمة المرور",
   "submit": "تسجيل",
-  "dashboard": "لوحة التحكم",
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "logout": "تسجيل الخروج",
+    "userList": "قائمة المستخدمين"
+  },
   "notFound": "الصفحة غير موجودة",
   "createUser": "إنشاء مستخدم",
   "name": "الاسم",
@@ -18,6 +22,41 @@
   "cancel": "إلغاء",
   "save": "حفظ",
   "close": "إغلاق",
-    "enterEmail":"أدخل بريدك الإلكتروني"
-
+  "enterEmail":"أدخل بريدك الإلكتروني",
+  "editUser":"تعديل المستخدم",
+  "deleteUser": {
+    "confirmation": "هل أنت متأكد أنك تريد حذف هذا المستخدم؟",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "error": "فشل في حذف المستخدم"
+  },
+  "header": {
+    "title": "لوحة التحكم",
+    "logout": "تسجيل الخروج"
+  },
+  "modernUserTable": {
+    "filterEmails": "تصفية البريد الإلكتروني...",
+    "columns": "الأعمدة",
+    "createUser": "إنشاء مستخدم",
+    "id": "المعرف",
+    "name": "الاسم",
+    "email": "البريد ",
+    "gender": "الجنس",
+    "female": "أنثى",
+    "male": "ذكر",
+    "phone": "الهاتف",
+    "action": "الإجراء",
+    "noUsersFound": "لم يتم العثور على مستخدمين.",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "of": "من",
+    "rowsSelected": "صف (صفوف) محددة.",
+    "previous": "السابق",
+    "next": "التالي"
+  },
+  "userAvatarMenu": {
+    "logout": "تسجيل الخروج"
+  },
+  "validationError": "فشل التحقق. يرجى التحقق من الإدخال الخاص بك.",
+  "userUpdated": "تم تحديث المستخدم بنجاح!"
 }

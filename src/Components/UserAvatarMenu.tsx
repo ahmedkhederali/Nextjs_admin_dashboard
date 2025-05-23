@@ -1,4 +1,6 @@
+"use client"
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 
 interface UserAvatarMenuProps {
   name: string;
@@ -17,6 +19,8 @@ function getInitials(name: string) {
 export default function UserAvatarMenu({ name, avatarUrl, onLogout }: UserAvatarMenuProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const t = useTranslations('userAvatarMenu');
+  const locale = useLocale();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -52,13 +56,12 @@ export default function UserAvatarMenu({ name, avatarUrl, onLogout }: UserAvatar
         )}
       </button>
       {open && (
-        <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow z-50 p-6 flex flex-col items-center">
-          {/* Language switcher removed, only logout shown */}
+        <div className={`absolute ${locale === 'ar' ? 'left-0' : 'right-0'} mt-2 w-48 bg-white border rounded shadow z-50 p-2 flex flex-col items-center`}>
           <button
             className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600 rounded"
             onClick={onLogout}
           >
-            Log out
+            {t('logout')}
           </button>
         </div>
       )}

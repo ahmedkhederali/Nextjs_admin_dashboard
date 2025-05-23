@@ -3,8 +3,10 @@ import { useUsersTable } from '@/customeHooks/useUsersTable';
 import Loading from './loading';
 import { toast } from 'sonner';
 import ModernUserTable from './ModernUserTable';
+import { useTranslations } from 'next-intl';
 
 export default function DashboardPage() {
+  const t = useTranslations('dashboard');
   const {
     users,
     loading,
@@ -27,7 +29,7 @@ export default function DashboardPage() {
     <div className="p-4">
       <div className="flex flex-col items-center justify-center mb-8">
         <h1 className="text-3xl font-bold text-gray-800 text-center mb-2">
-          User List
+          {t('userList')}
         </h1>
         <div className="h-1 w-16 bg-gray-300 rounded-full mb-4" />
       </div>

@@ -1,5 +1,9 @@
 'use server';
 import { redirect } from "next/navigation";
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
+const STATIC_TOKEN = publicRuntimeConfig.NEXT_PUBLIC_STATIC_TOKEN;
 
 export async function loginFunction(
   formState: { message: string },
@@ -21,7 +25,7 @@ export async function loginFunction(
       shouldRedirect = true;
       return {
         message: 'success',
-        token: 'Bearer eyJ0eXAiOiAiSldUIiwgInR5cGUiOiAiQmVhcmVyIiwgInZhbCI6ICIxMjM0NS1hYmNkLWVmZ2gtMTIzNC01Njc4OTAifQ==',
+        token: STATIC_TOKEN,
         email
       };
     } else {

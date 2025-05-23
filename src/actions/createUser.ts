@@ -35,24 +35,6 @@ export async function createUserFunction(
     }
     console.log('Token:', authToken);
     try {
-
-
-        const res = await fetch('/api/users', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${authToken}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(result.data),
-        });
-        if (!res.ok) {
-            return {
-                errors: {
-                    _form: [await res.text()],
-                },
-            };
-        }
-
         return {
             errors: {},
             success: true,

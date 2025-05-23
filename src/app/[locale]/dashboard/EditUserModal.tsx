@@ -1,13 +1,11 @@
-import React from "react";
-import { useTranslations } from 'next-intl';
+import React from 'react';
 import { Input } from '@/Components/ui/input';
 import { Button } from '@/Components/ui/button';
-import { useCreateUser } from '@/customeHooks/useCreateUser';
-import { CreateUserModalProps } from "@/types/general_interfaces";
+import { useTranslations } from 'next-intl';
+import { EditUserModalProps } from '@/types/general_interfaces';
+import { useEditUser } from '@/customeHooks/useEditUser';
 
-
-
-const CreateUserModal: React.FC<CreateUserModalProps> = ({ onClose }) => {
+const EditUserModal: React.FC<EditUserModalProps> = ({ user, onClose }) => {
   const t = useTranslations();
 
   const {
@@ -15,7 +13,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({ onClose }) => {
     formState,
     handleChange,
     handleSubmit
-  } = useCreateUser(onClose);
+  } = useEditUser(user, onClose);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
@@ -27,7 +25,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({ onClose }) => {
         >
           &times;
         </button>
-        <h2 className="text-2xl font-extrabold mb-6 text-center text-gray-500 dark:text-white tracking-tight">{t('createUser')}</h2>
+        <h2 className="text-2xl font-extrabold mb-6 text-center text-gray-500 dark:text-white tracking-tight">{t('editUser')}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block mb-1 font-medium text-gray-700 dark:text-gray-200">{t('name')}</label>
@@ -47,7 +45,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({ onClose }) => {
             <label className="block mb-1 font-medium text-gray-700 dark:text-gray-200">{t('gender')}</label>
             <select
               name="gender"
-              value={form.gender}
+              value={form.gender ?? ''}
               onChange={handleChange}
               className="border rounded px-3 py-2 w-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200"
             >
@@ -60,7 +58,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({ onClose }) => {
           </div>
           <div>
             <label className="block mb-1 font-medium text-gray-700 dark:text-gray-200">{t('phone')}</label>
-            <Input name="phone" value={form.phone} onChange={handleChange} placeholder={t('enterPhone')} />
+            <Input name="phone" value={form.phone ?? ''} onChange={handleChange} placeholder={t('enterPhone')} />
             {formState.errors.phone && (
               <p className="text-red-600 text-sm">{formState.errors.phone[0]}</p>
             )}
@@ -72,7 +70,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({ onClose }) => {
           )}
           {formState.success && (
             <div className="text-center mb-2 text-green-600">
-              {t('userCreated')}
+              {t('userUpdated')}
             </div>
           )}
           <div className="flex justify-end gap-2 mt-6">
@@ -97,4 +95,4 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({ onClose }) => {
   );
 };
 
-export default CreateUserModal;
+export default EditUserModal;

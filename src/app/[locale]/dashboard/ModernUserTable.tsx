@@ -3,6 +3,7 @@ import { Checkbox } from '@/Components/ui/checkbox';
 import { Button } from '@/Components/ui/button';
 import { ModernUserTableProps, User } from '@/types/general_interfaces';
 import { useModernUserTableLogic } from '@/customeHooks/useModernUserTableLogic';
+import { getGenderLabel } from '@/lib/utils';
 import CreateUserModal from './CreateUserModal';
 import EditUserModal from './EditUserModal';
 import DeleteUserModal from './DeleteUserModal';
@@ -46,39 +47,27 @@ export default function ModernUserTable({
     setShowDeleteUser(true);
   };
 
-  const getGenderLabel = (gender: string, t: (key: string) => string) => {
-    if (gender === 'male') return t('male');
-    if (gender === 'female') return t('female');
-    return gender;
-  };
-
   return (
     <div className="w-full">
-      <div className="flex gap-2 mb-2 justify-between items-center">
+      {/* Responsive header: input on top, buttons below on mobile */}
+      <div className="flex flex-col gap-2 mb-2 sm:flex-row sm:justify-between sm:items-center">
         <input
-          className="border rounded px-3 py-2 w-full max-w-xs"
+          className="border rounded px-3 py-2 w-full  sm:max-w-xs"
           placeholder={t('filterEmails')}
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
-        <div className="relative">
+      <div className="flex flex-col gap-2 w-full sm:w-auto sm:flex-row sm:gap-2 sm:mt-0 mt-2">
+        <div className="relative w-full sm:w-auto">
           <Button
             type="button"
             variant="outline"
-            className="min-w-[110px]"
+            className="min-w-[110px] w-full sm:w-auto"
             onClick={() => setColumnsOpen((v) => !v)}
             aria-haspopup="true"
             aria-expanded={columnsOpen}
           >
             {t('columns')} ▼
-          </Button>
-          <Button
-            type="button"
-            variant="default"
-            className="ml-2 min-w-[110px] bg-blue-600 text-white hover:bg-blue-700"
-            onClick={() => setShowCreateUser(true)}
-          >
-            {t('createUser')}
           </Button>
           {columnsOpen && (
             <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow z-50">
@@ -95,9 +84,19 @@ export default function ModernUserTable({
               ))}
             </div>
           )}
+          </div>
+          <Button
+            type="button"
+            variant="default"
+            className="min-w-[110px] w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700"
+            onClick={() => setShowCreateUser(true)}
+          >
+            {t('createUser')}
+          </Button>
         </div>
       </div>
-      <div className="overflow-x-auto rounded-lg border">
+      {/* Table container with dynamic height */}
+      <div className="overflow-auto rounded-lg border">
         <table className="min-w-full text-sm">
           <thead>
             <tr className={`bg-muted ${locale === 'ar' ? 'text-right' : 'text-left'}`}>

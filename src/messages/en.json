@@ -56,5 +56,18 @@
     "logout": "Log out"
   },
   "validationError": "Validation failed. Please check your input.",
-  "userUpdated": "User updated successfully!"
+  "userUpdated": "User updated successfully!",
+  "userPage": {
+    "userNotFound": "User not found",
+    "id": "ID",
+    "email": "Email",
+    "phone": "Phone",
+    "gender": "Gender",
+    "male": "Male",
+    "female":"Female",
+    "notProvided": "Not provided"
+  },
+  "footer": {
+    "rightsReserved": "All rights reserved."
+  }
 }

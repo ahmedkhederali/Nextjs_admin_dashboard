@@ -4,7 +4,11 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/Components/ui/select";
 
-const LanguageSwitcher = () => {
+interface LanguageSwitcherProps {
+  fullWidth?: boolean;
+}
+
+const LanguageSwitcher = ({ fullWidth }: LanguageSwitcherProps) => {
   const router = useRouter();
   const pathname = usePathname(); // e.g. /en/login
   const currentLocale = useLocale(); // e.g. en or ar
@@ -22,7 +26,7 @@ const LanguageSwitcher = () => {
   return (
     <div className={` top-6 ${currentLocale === 'ar' ? 'left-[145]' : 'right-[145]'} z-50`}>
       <Select value={currentLocale || undefined} onValueChange={handleLanguageChange}>
-        <SelectTrigger className="w-[120px] border p-2 rounded">
+        <SelectTrigger className={`border p-2 rounded ${fullWidth ? 'w-full' : 'w-[120px]'}`}>
           <SelectValue placeholder="Select language" />
         </SelectTrigger>
         <SelectContent>

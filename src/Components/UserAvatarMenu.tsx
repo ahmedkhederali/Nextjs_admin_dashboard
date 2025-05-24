@@ -1,11 +1,13 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import LanguageSwitcher from './LanguageSwitcher';
 
 interface UserAvatarMenuProps {
   name: string;
   avatarUrl?: string;
   onLogout: () => void;
+  showLanguageSwitcher?: boolean;
 }
 
 function getInitials(name: string) {
@@ -16,7 +18,7 @@ function getInitials(name: string) {
     .toUpperCase();
 }
 
-export default function UserAvatarMenu({ name, avatarUrl, onLogout }: UserAvatarMenuProps) {
+export default function UserAvatarMenu({ name, avatarUrl, onLogout, showLanguageSwitcher }: UserAvatarMenuProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const t = useTranslations('userAvatarMenu');
@@ -63,6 +65,11 @@ export default function UserAvatarMenu({ name, avatarUrl, onLogout }: UserAvatar
           >
             {t('logout')}
           </button>
+          {showLanguageSwitcher && (
+            <div className="w-full mt-2" onMouseDown={e => e.stopPropagation()}>
+              <LanguageSwitcher fullWidth />
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import HtmlAttributesUpdater from '@/Components/HtmlAttributesUpdater';
 import ReduxProvider from '@/store/provider';
+import Footer from '@/Components/Footer';
 
 export default async function LocaleLayout({
   children,
@@ -19,12 +20,14 @@ export default async function LocaleLayout({
   const messages = (await import(`../../messages/${locale}.json`)).default;
 
   return (
-    // DON'T move locale-dependent values into html/body directly if they change on client
     <ReduxProvider>
-    <NextIntlClientProvider locale={locale} messages={messages}>
-      <HtmlAttributesUpdater />
-      {children}
-    </NextIntlClientProvider>
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        <HtmlAttributesUpdater />
+        <div className="min-h-screen flex flex-col overflow-x-hidden">
+          {children}
+          <Footer />
+        </div>
+      </NextIntlClientProvider>
     </ReduxProvider>
   );
 }

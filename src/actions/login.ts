@@ -1,10 +1,7 @@
 'use server';
 import { redirect } from "next/navigation";
-import getConfig from 'next/config';
 
-const { publicRuntimeConfig } = getConfig();
-const STATIC_TOKEN = publicRuntimeConfig.NEXT_PUBLIC_STATIC_TOKEN;
-
+const STATIC_TOKEN = process.env.NEXT_PUBLIC_STATIC_TOKEN;
 export async function loginFunction(
   formState: { message: string },
   formData: FormData

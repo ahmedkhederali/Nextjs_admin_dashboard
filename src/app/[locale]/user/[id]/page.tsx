@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
+import { Button } from '@/Components/ui/button';
 import { Card } from '@/Components/ui/card';
 import Header from '@/Components/Header';
 import { useTranslations } from 'next-intl';
@@ -10,7 +11,12 @@ import { getGenderLabel } from '@/lib/utils';
 
 export default function UserPage() {
   const params = useParams();
+  const router = useRouter();
   const t = useTranslations('userPage');
+  
+  const handleBack = () => {
+    router.back();
+  };
   const { user, loading, error } = useUser(params.id as string);
 
   if (loading) {
@@ -46,9 +52,17 @@ export default function UserPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
+    <div className="min-h-screen bg-gray-50">      <Header />
       <main className="container mx-auto px-4 py-8">
+        <div className="mb-4">
+          <Button
+            variant="outline"
+            onClick={handleBack}
+            className="flex items-center gap-2"
+          >
+            ← {t('back')}
+          </Button>
+        </div>
         <Card className="p-6">
           <div className="space-y-6">
             {/* User Avatar and Name Section */}

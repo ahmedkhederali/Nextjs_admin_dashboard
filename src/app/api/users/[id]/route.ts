@@ -1,14 +1,18 @@
 import { NextResponse } from 'next/server';
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
     const token = request.headers.get('Authorization');
+    const { id } = await params;
 
     if (!token) {
       return NextResponse.json({ message: 'No token provided' }, { status: 401 });
     }
 
-    const res = await fetch(`https://mini-admin-portal.vercel.app/api/users/${params.id}`, {
+    const res = await fetch(`https://mini-admin-portal.vercel.app/api/users/${id}`, {
       headers: {
         'Authorization': token,
       },
@@ -32,16 +36,20 @@ export async function GET(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
     const body = await request.json();
     const token = request.headers.get('Authorization');
+    const { id } = await params;
 
     if (!token) {
       return NextResponse.json({ message: 'No token provided' }, { status: 401 });
     }
 
-    const res = await fetch(`https://mini-admin-portal.vercel.app/api/users/${params.id}`, {
+    const res = await fetch(`https://mini-admin-portal.vercel.app/api/users/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -62,15 +70,19 @@ export async function PUT(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
     const token = request.headers.get('Authorization');
+    const { id } = await params;
 
     if (!token) {
       return NextResponse.json({ message: 'No token provided' }, { status: 401 });
     }
 
-    const res = await fetch(`https://mini-admin-portal.vercel.app/api/users/${params.id}`, {
+    const res = await fetch(`https://mini-admin-portal.vercel.app/api/users/${id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': token,

@@ -1,9 +1,24 @@
+import { Metadata } from 'next';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import HtmlAttributesUpdater from '@/Components/HtmlAttributesUpdater';
 import ReduxProvider from '@/store/provider';
 import Footer from '@/Components/Footer';
+import { constructMetadata } from '@/lib/metadata';
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params;
+return constructMetadata({
+ locale,
+ path: `/${locale}`,
+});
+
+}
 
 export default async function LocaleLayout({
   children,

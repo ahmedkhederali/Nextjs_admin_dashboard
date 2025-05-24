@@ -1,12 +1,10 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from 'sonner';
 
-export const metadata: Metadata = {
-  title: "Home Page",
-  description: "Home Page of Admin Dashboard",
-};
-
+export async function generateMetadata(): Promise<Metadata> {
+  return {}; // DO NOT return title or description here
+}
 export default async function RootLayout({
   children,
 }: Readonly<{

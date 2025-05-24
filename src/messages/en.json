@@ -1,10 +1,33 @@
 {
+  "metadata": {
+    "siteName": "Admin Dashboard",
+    "pages": {
+      "dashboard": {
+        "title": "Dashboard - Admin Portal",
+        "description": "Manage users and system settings in the admin dashboard"
+      },
+      "login": {
+        "title": "Login - Admin Dashboard",
+        "description": "Secure login to access the admin dashboard"
+      },
+      "userDetails": {
+        "title": "User Details",
+        "description": "View and manage user details and information"
+      }
+    }
+  },
   "login": "Login",
   "email": "Email",
   "password": "Password",
   "submit": "Submit",
   "dashboard": {
     "userList": "User List"
+  },
+  "404Page": {
+    "title": "Page Not Found",
+    "description": "Oops! The page you are looking for seems to have vanished into the digital void.",
+    "goBack": "Go Back",
+    "goHome": "Go Home"
   },
   "notFound": "Page Not Found",
   "createUser": "Create User",
@@ -64,6 +87,7 @@
     "phone": "Phone",
     "gender": "Gender",
     "male": "Male",
+    "back": "Back",
     "female":"Female",
     "notProvided": "Not provided"
   },

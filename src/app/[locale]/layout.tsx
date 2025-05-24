@@ -13,7 +13,6 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>; // next-intl v3 requires async params
 }) {
   const { locale } = await params;
-  console.log('LocaleLayout', locale);
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }

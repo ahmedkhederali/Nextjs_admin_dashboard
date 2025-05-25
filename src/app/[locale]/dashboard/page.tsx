@@ -1,11 +1,14 @@
 import { getDashboardMetadata } from './metadata';
 import DashboardClient from './DashboardClient';
 import type { Metadata } from 'next';
-import { PageParams } from '@/types/general_interfaces';
 
-export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
-  return getDashboardMetadata(locale); // ✅ متناسق
+  return getDashboardMetadata(locale);
 }
 
 export default function DashboardPage() {

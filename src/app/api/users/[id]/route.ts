@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+   const STATIC_TOKEN = process.env.NEXT_PUBLIC_URL;
 
 export async function GET(
   request: Request,
@@ -11,8 +12,7 @@ export async function GET(
     if (!token) {
       return NextResponse.json({ message: 'No token provided' }, { status: 401 });
     }
-
-    const res = await fetch(`https://mini-admin-portal.vercel.app/api/users/${id}`, {
+    const res = await fetch(`${STATIC_TOKEN}/${id}`, {
       headers: {
         'Authorization': token,
       },
@@ -49,7 +49,7 @@ export async function PUT(
       return NextResponse.json({ message: 'No token provided' }, { status: 401 });
     }
 
-    const res = await fetch(`https://mini-admin-portal.vercel.app/api/users/${id}`, {
+    const res = await fetch(`${STATIC_TOKEN}/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export async function DELETE(
       return NextResponse.json({ message: 'No token provided' }, { status: 401 });
     }
 
-    const res = await fetch(`https://mini-admin-portal.vercel.app/api/users/${id}`, {
+    const res = await fetch(`${STATIC_TOKEN}/${id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': token,

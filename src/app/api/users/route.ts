@@ -9,8 +9,9 @@ export async function POST(request: Request) {
     if (!token) {
       return NextResponse.json({ message: 'No token provided' }, { status: 401 });
     }
+  const STATIC_TOKEN = process.env.NEXT_PUBLIC_URL;
 
-    const res = await fetch('https://mini-admin-portal.vercel.app/api/users', {
+    const res = await fetch(`${STATIC_TOKEN}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

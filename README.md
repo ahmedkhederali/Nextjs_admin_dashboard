@@ -5,7 +5,9 @@ This is a **Mini Admin Dashboard** built with **Next.js 15 (App Router)**. It sh
 ---
 ## How To Work 
 - run **npm i --legacy-peer-deps**
-- add file .env.local that conation NEXT_PUBLIC_STATIC_TOKEN that have the token 
+- add file .env.local that conation 
+-NEXT_PUBLIC_STATIC_TOKEN that have the token add                
+-NEXT_PUBLIC_URL=https://mini-admin-portal.vercel.app/api/users
 
 ## 🚀 Features
 

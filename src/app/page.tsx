@@ -1,9 +1,11 @@
+import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
-export default function LocaleHome({
-  params
+export default async function LocaleHome({
+  params,
 }: {
-  params: { locale: string };
-}) {
-  redirect(`/${params.locale}/login`);
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  redirect(`/${locale}/login`);
 }

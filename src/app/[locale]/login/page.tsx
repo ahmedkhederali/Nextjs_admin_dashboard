@@ -1,9 +1,12 @@
 import { getLoginMetadata } from './metadata';
 import LoginClient from './LoginClient';
-import { PageParams } from '@/types/general_interfaces';
 import type { Metadata } from 'next';
 
-export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   return getLoginMetadata(locale);
 }

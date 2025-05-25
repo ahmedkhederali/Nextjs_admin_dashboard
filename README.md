@@ -3,37 +3,57 @@
 This is a **Mini Admin Dashboard** built with **Next.js 15 (App Router)**. It showcases modern frontend skills such as routing, protected middleware, state management, internationalization, API integration, form handling, and reusable components.
 
 ---
+## How To Work 
+- run **npm i --legacy-peer-deps**
+- add file .env.local that conation NEXT_PUBLIC_STATIC_TOKEN that have the token 
 
 ## 🚀 Features
 
-- ✅ **Authentication**
-  - Local-only login with hardcoded credentials
-  - Middleware-protected routes (e.g., `/dashboard`, `/users/:id`)
-  
-- 🌍 **Localization**
-  - English and Arabic with dynamic RTL switching
-  - Route-based locale detection using `next-intl`
+### ✅ **Authentication**
+- Local-only login with hardcoded credentials.
+- Middleware-protected routes (e.g., `/dashboard`, `/users/:id`).
+- Token-based authentication stored in cookies and localStorage.
 
-- 👤 **User Management**
-  - Dashboard listing users
-  - User details page via dynamic route
-  - Modal for Create/Edit with form validation
+### 🌍 **Localization**
+- English and Arabic support with dynamic RTL switching.
+- Route-based locale detection using `next-intl`.
 
-- 🎯 **State Management**
-  - Zustand for session and user state
+### 👤 **User Management**
+- Dashboard listing users with pagination, sorting, and filtering.
+- User details page via dynamic route.
+- Modals for creating, editing, and deleting users with form validation.
 
-- 💅 **UI/UX**
-  - Tailwind CSS + shadcn/ui components
-  - Responsive design
-  - Accessible forms and modals
+### 🎯 **State Management**
+- Redux Toolkit for managing global state (e.g., users, authentication).
 
-- 🧪 **Testing**
-  - Unit tests for components and hooks using Jest & RTL
+### 🧪 **API Integration**
+- Proxy API routes for fetching, creating, updating, and deleting users.
+- Secure token-based API requests.
+
+### 💅 **UI/UX**
+- Tailwind CSS + shadcn/ui components for a modern and responsive design.
+- Accessible forms and modals.
+
+### 🧪 **Testing**
+- Unit tests for components and hooks using Jest & React Testing Library.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Framework**: [Next.js 15](https://nextjs.org/)
+- **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/)
+- **Internationalization**: [next-intl](https://next-intl-docs.vercel.app/)
+- **Validation**: [Zod](https://zod.dev/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Notifications**: [Sonner](https://sonner.dev/)
+- **Testing**: [Jest](https://jestjs.io/), [React Testing Library](https://testing-library.com/)
+- **Utilities**: `clsx`, `tailwind-merge`
 
 ---
 
 ## 📁 Project Structure
-
 
 
 ![Image](https://github.com/user-attachments/assets/dba9038a-2026-461e-bb8e-a65655a67f1e)

@@ -4,11 +4,12 @@ import { Button } from '@/Components/ui/button';
 import { ModernUserTableProps, User } from '@/types/general_interfaces';
 import { useModernUserTableLogic } from '@/customeHooks/useModernUserTableLogic';
 import { getGenderLabel } from '@/lib/utils';
-import CreateUserModal from './CreateUserModal';
-import EditUserModal from './EditUserModal';
-import DeleteUserModal from './DeleteUserModal';
+
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 import { useTranslations, useLocale } from 'next-intl';
+import CreateUserModal from '@/Components/Modals/CreateUserModal';
+import EditUserModal from '@/Components/Modals/EditUserModal';
+import DeleteUserModal from '@/Components/Modals/DeleteUserModal';
 
 export default function ModernUserTable({
   users,

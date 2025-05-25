@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import HtmlAttributesUpdater from '@/Components/HtmlAttributesUpdater';
+import HtmlAttributesUpdater from '@/Components/global/HtmlAttributesUpdater';
 import ReduxProvider from '@/store/provider';
-import Footer from '@/Components/Footer';
+import Footer from '@/Components/global/Footer';
 import { constructMetadata } from '@/lib/metadata';
 
 export async function generateMetadata({

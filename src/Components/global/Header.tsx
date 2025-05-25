@@ -1,8 +1,8 @@
 "use client"
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import LanguageSwitcher from '@/Components/LanguageSwitcher';
-import UserAvatarMenu from '@/Components/UserAvatarMenu';
+import LanguageSwitcher from '@/Components/global/LanguageSwitcher';
+import UserAvatarMenu from '@/Components/global/UserAvatarMenu';
 import { useTranslations, useLocale } from 'next-intl';
 
 const Header: React.FC = () => {

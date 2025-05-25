@@ -77,3 +77,10 @@ export interface DeleteUserModalProps {
   onClose: () => void;
   onDeleteSuccess: () => void;
 }
+
+export type PageParams = {
+  params: {
+    locale: string;
+    id: string;
+  };
+};

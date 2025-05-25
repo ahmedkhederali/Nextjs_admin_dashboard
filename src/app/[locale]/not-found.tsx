@@ -1,14 +1,18 @@
 "use client";
-import { useTranslations } from "next-intl";
+import {  useTranslations } from "next-intl";
 import { useRouter, useParams } from "next/navigation";
 import { Button } from "@/Components/ui/button";
+import { useEffect } from "react";
 
 export default function NotFound() {
-  const t = useTranslations('404Page');
   const router = useRouter();
   const params = useParams();
   const locale = params.locale as string || 'en';
-
+ const t = useTranslations('404Page');
+  useEffect(() => {
+    document.title = `404 - ${t('title')}`;
+  }, [t]);
+  
   const goToDashboard = () => {
     router.push(`/${locale}/dashboard`);
   };
@@ -62,25 +66,6 @@ export default function NotFound() {
           </div>
         </div>
       </div>
-
-      {/* Add some custom animation keyframes */}
-      <style jsx global>{`
-        @keyframes blob {
-          0% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-          100% { transform: translate(0px, 0px) scale(1); }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-      `}</style>
     </div>
   );
 }

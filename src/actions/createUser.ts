@@ -21,9 +21,7 @@ export async function createUserFunction(
             errors: result.error.flatten().fieldErrors,
         };
     }
-    // Debugging: Log all cookies to verify their presence
     const cookieStore = await cookies();
-    // Retrieve the token from cookies
     const authToken = cookieStore.get('token')?.value || '';
 
     if (!authToken) {

@@ -1,20 +1,14 @@
-import { Metadata } from 'next';
 import { constructMetadata } from '@/lib/metadata';
 
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ locale: string }> 
-}): Promise<Metadata> {
-  const { locale } = await params;
+export async function getDashboardMetadata(locale: string) {
   const messages = (await import(`../../../messages/${locale}.json`)).default;
-    console.log(messages)
 
   return constructMetadata({
     title: messages.metadata.pages.dashboard.title,
     description: messages.metadata.pages.dashboard.description,
     locale,
-    path: '/dashboard',
-    absoluteTitle:true,
+    path: `/${locale}/dashboard`,
+    absoluteTitle: true,
   });
 }
+

@@ -1,4 +1,3 @@
-// src/store/slices/authSlice.ts
 import { initialState } from '@/types/general_interfaces';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 

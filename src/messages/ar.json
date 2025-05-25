@@ -19,6 +19,7 @@
   "login": "تسجيل الدخول",
   "email": "البريد الإلكتروني",
   "password": "كلمة المرور",
+  "userCreationError": "فشل في إنشاء المستخدم: {error}",
   "submit": "تسجيل",
   "dashboard": {
     "title": "لوحة التحكم",

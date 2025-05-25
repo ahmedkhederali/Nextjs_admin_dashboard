@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useAppDispatch } from '@/store/hooks';
-import { createUser } from '@/store/slices/usersSlice';
+import { createUser, fetchUsers } from '@/store/slices/usersSlice';
 import { toast } from 'sonner';
 import { createUserFunction } from '@/actions/createUser';
 import { CreateUserFormState } from '@/types/general_interfaces';
 import { useTranslations } from 'next-intl';
+import { parseErrorMessage } from '@/lib/utils';
 
 export const useCreateUser = (onClose: () => void) => {
   const t = useTranslations();
@@ -35,7 +36,7 @@ export const useCreateUser = (onClose: () => void) => {
     if (!validationResponse.success) {
       toast.error(t('validationError'));
       setFormState(validationResponse);
-      return; // Stop submission if validation fails
+      return;
     }
 
     const newUser = {
@@ -45,11 +46,20 @@ export const useCreateUser = (onClose: () => void) => {
       phone: form.phone,
     };
 
-    dispatch(createUser(newUser));
+  try {
+    await dispatch(createUser(newUser)).unwrap();  
     toast.success(t('userCreated'));
     setFormState({ errors: {}, success: true });
     onClose();
-  };
+    dispatch(fetchUsers());
+  } catch (error) {
+    const message = parseErrorMessage(error);
+    toast.error(t('userCreationError', { error: message }));
+    setFormState({ errors: {}, success: false });
+  }
+};
+
+
 
   return {
     form,

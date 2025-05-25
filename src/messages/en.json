@@ -20,6 +20,7 @@
   "email": "Email",
   "password": "Password",
   "submit": "Submit",
+  "userCreationError": "Failed to create user: {error}",
   "dashboard": {
     "userList": "User List"
   },

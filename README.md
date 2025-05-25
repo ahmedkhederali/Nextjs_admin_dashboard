@@ -38,7 +38,9 @@ This is a **Mini Admin Dashboard** built with **Next.js 15 (App Router)**. It sh
 
 ### 🧪 **Testing**
 - Unit tests for components and hooks using Jest & React Testing Library.
-
+- Includes tests for:
+  - Button: Checks render and click behavior.
+  - Input: Validates rendering, typing, and disabled state.
 ---
 
 ## 🛠️ Technologies Used
